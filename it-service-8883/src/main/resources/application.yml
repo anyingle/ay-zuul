@@ -1,0 +1,15 @@
+server:
+  port: 8883
+
+spring:
+  application:
+    name: it-ip
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8880/eureka/
+  instance:
+    hostname: localhost
+    leaseExpirationDurationInSeconds: 10
+    leaseRenewalIntervalInSeconds: 5
