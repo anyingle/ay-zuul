@@ -13,8 +13,7 @@ public class Index {
     private String port;
 
     @GetMapping
-    public String index() throws InterruptedException {
-        Thread.sleep(2000L);
-        return "IP";
+    public String index() {
+        return port;
     }
 }

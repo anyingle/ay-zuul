@@ -7,8 +7,6 @@ spring:
 
 eureka:
   client:
-#    registerWithEureka: false
-#    fetchRegistry: false
     serviceUrl:
       defaultZone: http://localhost:8880/eureka
 
@@ -16,7 +14,3 @@ zuul:
   routes:
     it-service: /it-service/**
     it-ip: /ip/**
-
-ribbon:
-  readTimeout: 5000
-  connectTimeout: 5000

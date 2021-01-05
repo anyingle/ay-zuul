@@ -14,11 +14,6 @@ public class Index {
 
     @GetMapping
     public String index() {
-//        try {
-//            Thread.sleep(2000L);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
         return port;
     }
 }
