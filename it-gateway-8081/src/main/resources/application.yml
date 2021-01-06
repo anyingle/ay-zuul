@@ -13,4 +13,21 @@ eureka:
 zuul:
   routes:
     it-service: /it-service/**
-    it-ip: /ip/**
+  retryable: true
+
+#it-service:
+#  ribbon:
+#    MaxAutoRetries: 2
+#    MaxAutoRetriesNextServer: 2
+#    OkToRetryOnAllOperations: true
+#    ReadTimeout: 5000
+#    ConnectTimeout: 2000
+#    RetryableStatusCodes: 500,502,503
+
+ribbon:
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 2
+  OkToRetryOnAllOperations: true
+  ReadTimeout: 5000
+  ConnectTimeout: 2000
+  RetryableStatusCodes: 500,502,503

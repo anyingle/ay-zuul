@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ay</groupId>
-    <artifactId>it-gateway-8081</artifactId>
+    <artifactId>it-gateway-8082</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>it-gateway-8081</name>
-    <description>it-gateway-8081</description>
+    <name>it-gateway-8082</name>
+    <description>it-gateway-8082</description>
 
     <properties>
         <java.version>15</java.version>

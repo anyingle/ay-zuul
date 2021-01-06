@@ -1,0 +1,20 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: it-gateway
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8880/eureka
+
+zuul:
+  routes:
+    it-service: /it-service/**
+  RibbonRoutingFilter:
+    route:
+      disable: false
+  override:
+    retry: 3
