@@ -6,6 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.3.5.RELEASE</version>
+<!--        <version>1.5.9.RELEASE</version>-->
         <relativePath/>
     </parent>
     <groupId>com.ay</groupId>
@@ -17,6 +18,8 @@
     <properties>
         <java.version>15</java.version>
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+<!--        <java.version>1.8</java.version>-->
+<!--        <spring-cloud.version>Edgware.RELEASE </spring-cloud.version>-->
     </properties>
 
     <dependencies>

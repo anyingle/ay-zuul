@@ -6,6 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.3.5.RELEASE</version>
+<!--        <version>1.5.9.RELEASE</version>-->
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ay</groupId>
@@ -17,6 +18,10 @@
     <properties>
         <java.version>15</java.version>
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+<!--        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
+<!--        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>-->
+<!--        <java.version>1.8</java.version>-->
+<!--        <spring-cloud.version>Edgware.SR4</spring-cloud.version>-->
     </properties>
 
     <dependencies>
@@ -72,5 +77,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

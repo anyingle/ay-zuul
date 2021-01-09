@@ -15,19 +15,13 @@ zuul:
     it-service: /it-service/**
   retryable: true
 
-#it-service:
-#  ribbon:
-#    MaxAutoRetries: 2
-#    MaxAutoRetriesNextServer: 2
-#    OkToRetryOnAllOperations: true
-#    ReadTimeout: 5000
-#    ConnectTimeout: 2000
-#    RetryableStatusCodes: 500,502,503
-
-ribbon:
-  MaxAutoRetries: 1
-  MaxAutoRetriesNextServer: 2
-  OkToRetryOnAllOperations: true
-  ReadTimeout: 5000
-  ConnectTimeout: 2000
-  RetryableStatusCodes: 500,502,503
+# ribbon配置会导致正常异常信息依然无限重试 8次
+#ribbon:
+#  ConnectTimeout: 130000
+#  ReadTimeout:  130000
+#  OkToRetryOnAllOperations: true # 允许所有该服务的所有操作都可以重试
+#  MaxAutoRetriesNextServer: 3  # 参与重试的服务个数（不包含第一个服务）
+#  MaxAutoRetries: 1 # 重试次数（不包含第一次请求）
+#  retry:
+#    enabled: true
+#  retryableStatusCodes: 500,502,503
