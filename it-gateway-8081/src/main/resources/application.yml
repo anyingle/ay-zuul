@@ -9,19 +9,22 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8880/eureka
+#management:
+#  security:
+#    enabled: false
 
 zuul:
   routes:
     it-service: /it-service/**
   retryable: true
 
-# ribbon配置会导致正常异常信息依然无限重试 8次
-#ribbon:
-#  ConnectTimeout: 130000
-#  ReadTimeout:  130000
-#  OkToRetryOnAllOperations: true # 允许所有该服务的所有操作都可以重试
-#  MaxAutoRetriesNextServer: 3  # 参与重试的服务个数（不包含第一个服务）
-#  MaxAutoRetries: 1 # 重试次数（不包含第一次请求）
-#  retry:
-#    enabled: true
-#  retryableStatusCodes: 500,502,503
+ribbon:
+  ConnectTimeout: 130000
+  ReadTimeout:  130000
+  # 允许所有该服务的所有操作都可以重试
+  OkToRetryOnAllOperations: true
+  # 参与重试的服务个数（不包含第一个服务）  会重试所有存在服务
+  MaxAutoRetriesNextServer: 3
+  # 重试次数（不包含第一次请求）  且每次重试失败都会再次重试 所以8次是因为 1 * 2 + 3 * 2
+#  MaxAutoRetries: 1
+  retryableStatusCodes: 500,502,503

@@ -23,4 +23,11 @@ public class Index {
         log.info("exception");
         throw new RuntimeException("exception");
     }
+
+    @GetMapping("/sleep")
+    public String sleep() throws Exception{
+        log.info("sleep");
+        Thread.sleep(2000L);
+        return port;
+    }
 }
