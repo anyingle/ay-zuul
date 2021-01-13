@@ -10,8 +10,6 @@ eureka:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://localhost:8880
+      defaultZone: http://localhost:${server.port}
   instance:
     hostname: localhost
-
-# 控制Eureka的心跳？

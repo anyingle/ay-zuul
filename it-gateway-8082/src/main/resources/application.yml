@@ -13,8 +13,11 @@ eureka:
 zuul:
   routes:
     it-service: /it-service/**
-  RibbonRoutingFilter:
-    route:
-      disable: false
-  override:
-    retry: 3
+  retryable: true
+
+ribbon:
+  ConnectTimeout: 130000
+  ReadTimeout:  130000
+  OkToRetryOnAllOperations: true
+  MaxAutoRetriesNextServer: 3
+  retryableStatusCodes: 500,502,503
