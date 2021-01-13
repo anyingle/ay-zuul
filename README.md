@@ -8,5 +8,6 @@
   + 8082 重写源码, 重新获取已注册服务信息, 人工retry
 
 ###### case
-+ 同一个Eureka 注册两个不同ip段 it-ip
-  + 如何让Zuul路由时优先选择最近IP段
++ 同一个Eureka
+  + 注册两个不同ip段的zuul 和 it-service
+  + Zuul优先访问相同ip段的实例, 且有容灾效果

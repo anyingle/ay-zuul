@@ -13,3 +13,5 @@ eureka:
       defaultZone: http://localhost:8880
   instance:
     hostname: localhost
+
+# 控制Eureka的心跳？

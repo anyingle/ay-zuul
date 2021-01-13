@@ -4,14 +4,15 @@ server:
 spring:
   application:
     name: it-gateway
+#  cloud:
+#    loadbalancer:
+#      retry:
+#        enabled: true
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8880/eureka
-#management:
-#  security:
-#    enabled: false
 
 zuul:
   routes:
@@ -27,4 +28,10 @@ ribbon:
   MaxAutoRetriesNextServer: 3
   # 重试次数（不包含第一次请求）  且每次重试失败都会再次重试 所以8次是因为 1 * 2 + 3 * 2
 #  MaxAutoRetries: 1
+  # 没有 ribbon.retry.enable 这个配置 参考配置
+  # spring.cloud.loadbalancer.retry.enabled 也不起作用
+  # https://blog.csdn.net/chengqiuming/article/details/81336014
+  # http://www.amd5.cn/atang_4466.html
+#  retry:
+#    enabled: true
   retryableStatusCodes: 500,502,503
