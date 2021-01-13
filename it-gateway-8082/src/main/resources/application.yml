@@ -17,7 +17,8 @@ zuul:
 
 ribbon:
   ConnectTimeout: 130000
-  ReadTimeout:  130000
+  ReadTimeout: 130000
   OkToRetryOnAllOperations: true
   MaxAutoRetriesNextServer: 3
   retryableStatusCodes: 500,502,503
+  ServerListRefreshInterval: 1000
