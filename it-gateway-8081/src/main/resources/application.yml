@@ -13,8 +13,11 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8880/eureka
-    # 从Eureka Server获取注册表的时间间隔  有ribbon的就可以了
+    # 从Eureka Server获取注册表的时间间隔  有ribbon的就可以了   
 #    registryFetchIntervalSeconds: 1000
+    # 配置可能错了，用这套也许有用，未测试，因为ribbon配了哈哈
+#     fetch-registry: true
+#     registry-fetch-interval-seconds: 1 # 默认为30秒
 
 zuul:
   routes:
