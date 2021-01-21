@@ -16,3 +16,5 @@ eureka:
   server:
     # 提高缓存刷新率
     response-cache-update-interval-ms: 1000
+    # 禁用缓存
+    #use-read-only-response-cache: false
