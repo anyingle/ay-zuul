@@ -15,7 +15,7 @@
     <description>it-gateway-8082</description>
 
     <properties>
-        <java.version>15</java.version>
+        <java.version>1.8</java.version>
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
     </properties>
 
