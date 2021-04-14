@@ -8,8 +8,10 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8880/eureka/
+      defaultZone: http://localhost:8879/eureka/
   instance:
     hostname: localhost
+    metadata-map:
+      zone: ap
     leaseExpirationDurationInSeconds: 10
     leaseRenewalIntervalInSeconds: 5

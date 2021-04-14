@@ -12,6 +12,9 @@ spring:
 
 eureka:
   client:
+    # 不需要注册到自己
+    register-with-eureka: false
+    # 服务地址s
     serviceUrl:
       defaultZone: http://localhost:8880/eureka
     # 从Eureka Server获取注册表的时间间隔 这个没用 ribbon的配置有用
@@ -27,6 +30,7 @@ zuul:
 
 ribbon:
   ConnectTimeout: 3000
+  # 仅开放ReadTimeout时，Get请求会超时重试一次
   ReadTimeout:  20000
 #  默认false 只有get请求会重试 true为所有请求
 #  OkToRetryOnAllOperations: false
@@ -43,4 +47,4 @@ ribbon:
 #  目标服务异常 重试 HttpStatusCode
 #  retryableStatusCodes: 500, 502, 503
 #  Ribbon的提取Eureka间隔延迟 配合EurekaServer的提高刷新缓存配置或禁用缓存配置
-#  ServerListRefreshInterval: 1000
+  ServerListRefreshInterval: 1000

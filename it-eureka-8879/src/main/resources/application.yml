@@ -1,23 +1,23 @@
 server:
-  port: 8880
+  port: 8879
 
 spring:
   application:
     name: eureka-server
 
 eureka:
-  datacenter: cn
+  datacenter: ap
   instance:
-    hostname: server80
+    hostname: server79
   client:
     #由于自己就是服务器，不需要注册到自己
     register-with-eureka: false
     #由于自己就是服务器，不需要从服务器获取注册信息
     fetch-registry: false
-    #服务地址
+    #服务地址s
     serviceUrl:
 #      defaultZone: http://${eureka.instance.hostname}:${server.port}
-      defaultZone: http://localhost:8879/eureka/
+      defaultZone: http://localhost:8880/eureka/
   server:
     # 提高缓存刷新率
 #    response-cache-update-interval-ms: 1000
