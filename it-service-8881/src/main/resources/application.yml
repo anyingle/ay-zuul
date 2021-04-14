@@ -13,7 +13,7 @@ eureka:
     # AWS
     # 优先连接sa1,若连接不上再连接sa2,再连不上，连接defaultZone，但是启动前两个连接会报错，不影响使用
     service-url:
-      defaultZone: http://localhost:8880/eureka/
+      defaultZone: http://localhost:8879/eureka/
 #      sa1: http://localhost:8879/eureka
 #      sa2: http://localhost:8880/eureka
   instance:

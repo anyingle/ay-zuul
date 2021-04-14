@@ -14,14 +14,15 @@ eureka:
   client:
     # 不需要注册到自己
     register-with-eureka: false
+    # 注册发现
+    fetch-registry: true
     # 服务地址s
     serviceUrl:
-      defaultZone: http://localhost:8880/eureka
+      defaultZone: http://localhost:8879/eureka
     # 从Eureka Server获取注册表的时间间隔 这个没用 ribbon的配置有用
-#    registryFetchIntervalSeconds: 1000
-    # 配置可能错了，用这套也许有用，未测试，因为ribbon配了哈哈
-#     fetch-registry: true
-#     registry-fetch-interval-seconds: 1 # 默认为30秒
+    #    registryFetchIntervalSeconds: 1000
+    # eureka client间隔多久去拉取服务注册信息，默认为30秒
+    registry-fetch-interval-seconds: 8
 
 zuul:
   retryable: true
@@ -31,20 +32,20 @@ zuul:
 ribbon:
   ConnectTimeout: 3000
   # 仅开放ReadTimeout时，Get请求会超时重试一次
-  ReadTimeout:  20000
-#  默认false 只有get请求会重试 true为所有请求
-#  OkToRetryOnAllOperations: false
-#  默认1 参与重试的服务个数（不包含第一个服务）  会重试所有存在服务
-#  MaxAutoRetriesNextServer: 3
-#  默认0 重试次数（不包含第一次请求）   （案例：MaxS为3，MaxR为1，结果出现8次是因为 1 * 2 + 3 * 2）
-#  MaxAutoRetries: 0
-#  没有 ribbon.retry.enable 这个配置 参考配置
-#  spring.cloud.loadbalancer.retry.enabled 也不起作用
-#  https://blog.csdn.net/chengqiuming/article/details/81336014
-#  http://www.amd5.cn/atang_4466.html
-#  retry:
-#    enabled: true
-#  目标服务异常 重试 HttpStatusCode
-#  retryableStatusCodes: 500, 502, 503
-#  Ribbon的提取Eureka间隔延迟 配合EurekaServer的提高刷新缓存配置或禁用缓存配置
+  ReadTimeout: 20000
+  #  默认false 只有get请求会重试 true为所有请求
+  #  OkToRetryOnAllOperations: false
+  #  默认1 参与重试的服务个数（不包含第一个服务）  会重试所有存在服务
+  #  MaxAutoRetriesNextServer: 3
+  #  默认0 重试次数（不包含第一次请求）   （案例：MaxS为3，MaxR为1，结果出现8次是因为 1 * 2 + 3 * 2）
+  #  MaxAutoRetries: 0
+  #  没有 ribbon.retry.enable 这个配置 参考配置
+  #  spring.cloud.loadbalancer.retry.enabled 也不起作用
+  #  https://blog.csdn.net/chengqiuming/article/details/81336014
+  #  http://www.amd5.cn/atang_4466.html
+  #  retry:
+  #    enabled: true
+  #  目标服务异常 重试 HttpStatusCode
+  #  retryableStatusCodes: 500, 502, 503
+  #  Ribbon的提取Eureka间隔延迟 配合EurekaServer的提高刷新缓存配置或禁用缓存配置
   ServerListRefreshInterval: 1000

@@ -6,6 +6,16 @@ spring:
     name: eureka-server
 
 eureka:
+  server:
+    enable-self-preservation: true
+    renewalPercentThreshold: 0.7
+    # 清理下线服务 开启自我保护，当前配置无效
+    eviction-interval-timer-in-ms: 60000
+    # 提高缓存刷新率
+    #    response-cache-update-interval-ms: 1000
+    # 禁用缓存
+    use-read-only-response-cache: false
+
   datacenter: ap
   instance:
     hostname: server79
@@ -16,10 +26,5 @@ eureka:
     fetch-registry: false
     #服务地址s
     serviceUrl:
-#      defaultZone: http://${eureka.instance.hostname}:${server.port}
-      defaultZone: http://localhost:8880/eureka/
-  server:
-    # 提高缓存刷新率
-#    response-cache-update-interval-ms: 1000
-    # 禁用缓存
-    use-read-only-response-cache: false
+      defaultZone: http://${eureka.instance.hostname}:${server.port}
+#      defaultZone: http://localhost:8880/eureka/
