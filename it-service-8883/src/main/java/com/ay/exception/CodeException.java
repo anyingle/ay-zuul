@@ -13,4 +13,9 @@ import org.springframework.http.HttpStatus;
 public class CodeException extends RuntimeException{
     private String message;
     private HttpStatus status;
+
+    public CodeException(String message) {
+        this.message = message;
+        this.status = HttpStatus.BAD_REQUEST;
+    }
 }

@@ -12,7 +12,7 @@ eureka:
     # 清理下线服务 开启自我保护，当前配置无效
     eviction-interval-timer-in-ms: 60000
     # 提高缓存刷新率
-    #    response-cache-update-interval-ms: 1000
+    response-cache-update-interval-ms: 1000
     # 禁用缓存
     use-read-only-response-cache: false
 

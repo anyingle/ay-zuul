@@ -29,23 +29,18 @@ zuul:
   routes:
     it-service: /it-service/**
 
+## https://github.com/Netflix/ribbon/wiki/Getting-Started#the-properties-file-sample-clientproperties
 ribbon:
   ConnectTimeout: 3000
   # 仅开放ReadTimeout时，Get请求会超时重试一次
   ReadTimeout: 20000
-  #  默认false 只有get请求会重试 true为所有请求
-  #  OkToRetryOnAllOperations: false
+  #  默认false 只有get请求会重试 true为所有请求   ！必须提供retryableStatusCodes
+#  OkToRetryOnAllOperations: true
+  # 目标服务异常 重试 HttpStatusCode， 500, 502, 503, 400   ！必须有两个值如: 400, 400
+  retryableStatusCodes: 400, 500
   #  默认1 参与重试的服务个数（不包含第一个服务）  会重试所有存在服务
-  #  MaxAutoRetriesNextServer: 3
-  #  默认0 重试次数（不包含第一次请求）   （案例：MaxS为3，MaxR为1，结果出现8次是因为 1 * 2 + 3 * 2）
+#  MaxAutoRetriesNextServer: 3
+  #  默认0 重试次数（不包含第一次请求）   （案例：MaxS为3，MaxR为1，结果出现8次，因为 1 * 2 + 3 * 2）
   #  MaxAutoRetries: 0
-  #  没有 ribbon.retry.enable 这个配置 参考配置
-  #  spring.cloud.loadbalancer.retry.enabled 也不起作用
-  #  https://blog.csdn.net/chengqiuming/article/details/81336014
-  #  http://www.amd5.cn/atang_4466.html
-  #  retry:
-  #    enabled: true
-  #  目标服务异常 重试 HttpStatusCode
-  #  retryableStatusCodes: 500, 502, 503
   #  Ribbon的提取Eureka间隔延迟 配合EurekaServer的提高刷新缓存配置或禁用缓存配置
   ServerListRefreshInterval: 1000

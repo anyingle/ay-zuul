@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @author yingle.an
+ */
 @Slf4j
 @RestController
 public class Index {
@@ -25,7 +28,19 @@ public class Index {
     @GetMapping("/status/{httpStatus}")
     public void xxxHundred(@PathVariable HttpStatus httpStatus) {
         log.info("join exception {}", httpStatus);
-        throw new CodeException("yingle message exception", httpStatus);
+        throw new CodeException("status exception " + this.port, httpStatus);
+    }
+
+    @GetMapping("/exception")
+    public String exception() {
+        log.info("exception");
+        throw new CodeException("exception " + this.port);
+    }
+
+    @PostMapping("/exception")
+    public String exceptionPost() {
+        log.info("exception post");
+        throw new CodeException("exception post " + this.port);
     }
 
     @PostMapping("/sleep/post/{num}")
@@ -50,14 +65,8 @@ public class Index {
         log.info("{} 执行完成", threadFlag);
     }
 
-    @GetMapping("/exception")
-    public String exception() {
-        log.info("exception");
-        throw new RuntimeException("exception");
-    }
-
     @GetMapping("/sleep")
-    public String sleep() throws Exception{
+    public String sleep() throws InterruptedException{
         log.info("sleep");
         Thread.sleep(2000L);
         return port;

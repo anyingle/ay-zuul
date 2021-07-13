@@ -18,7 +18,7 @@ public class GlobalRestControllerExceptionAdvice {
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
     public ResponseEntity<Object> serviceExceptionHandler(Exception e) {
-        log.info("exception advice");
+        log.info("exception");
         if (e instanceof CodeException) {
             CodeException serviceException = (CodeException) e;
             return new ResponseEntity<>(serviceException.getMessage(), serviceException.getStatus());

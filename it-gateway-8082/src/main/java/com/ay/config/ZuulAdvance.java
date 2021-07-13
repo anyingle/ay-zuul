@@ -13,8 +13,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class ZuulAdvance implements IRule {
 
-    public static final int CONNECT_ENDPOINT_RETRY_NUMBER = 10;
-    private final AtomicInteger nextServerCyclicCounter;
+    private AtomicInteger nextServerCyclicCounter;
     private ILoadBalancer loadBalancer;
 
     public ZuulAdvance() {
@@ -51,37 +50,36 @@ public class ZuulAdvance implements IRule {
             log.info(se.toString());
         }
         if (lb == null) {
-            log.info("no load balancer");
+            log.warn("no load balancer");
             return null;
         }
         Server server;
         int count = 0;
-        while (count++ < CONNECT_ENDPOINT_RETRY_NUMBER) {
+        while (count++ < 10) {
             List<Server> reachableServers = lb.getReachableServers();
             List<Server> allServers = lb.getAllServers();
-            List<Server> preferredServers = allServers.parallelStream().filter(r -> r.getPort() % 2 == 8081 % 2).collect(Collectors.toList());
-            if (!preferredServers.isEmpty()) {
-                allServers = preferredServers;
-            }
             int upCount = reachableServers.size();
             int serverCount = allServers.size();
             if ((upCount == 0) || (serverCount == 0)) {
-                log.info("no up servers available from load balancer: " + lb);
+                log.warn("No up servers available from load balancer: " + lb);
                 return null;
             }
+            List<Server> preferredServers = allServers.parallelStream().filter(r -> r.getPort() % 2 == 8082 % 2).collect(Collectors.toList());
+            if (!preferredServers.isEmpty()) {
+                allServers = preferredServers;
+            }
             int nextServerIndex = this.incrementAndGetModulo(serverCount);
-            log.info("region index {}", nextServerIndex);
             server = allServers.get(nextServerIndex);
             if (server == null) {
                 Thread.yield();
                 continue;
             }
             if (server.isAlive() && (server.isReadyToServe())) {
-                return server;
+                return (server);
             }
         }
-        if (count >= CONNECT_ENDPOINT_RETRY_NUMBER) {
-            log.info("no available alive servers after 10 tries from load balancer: " + lb);
+        if (count >= 10) {
+            log.warn("No available alive servers after 10 tries from load balancer: " + lb);
         }
         return null;
     }
